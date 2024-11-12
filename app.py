@@ -2,23 +2,26 @@ import yt_dlp
 
 
 def download_video(url):
-    # Options for yt-dlp
+    # Caminho completo para a pasta onde deseja salvar o vídeo
+    output_path = 'C:/Users/cleiton/Videos/Youtube-Downloads/%(title)s.%(ext)s'
+
+    # Opções para yt-dlp
     ydl_opts = {
-        'format': 'best',  # Download the best available quality
-        'outtmpl': '%(title)s.%(ext)s',  # Set filename to video title
-        'noplaylist': True,  # Download single video if URL is part of a playlist
-        'quiet': False,  # Show download progress in the console
-        'ignoreerrors': True,  # Continue even if an error is encountered
-        'no_warnings': True,  # Suppress warnings
+        'format': 'best',  # Baixar na melhor qualidade disponível
+        'outtmpl': output_path,  # Definir o nome do arquivo para o título do vídeo
+        'noplaylist': True,  # Baixar um único vídeo se a URL fizer parte de uma playlist
+        'quiet': False,  # Mostrar progresso do download no console
+        'ignoreerrors': True,  # Continuar mesmo se um erro for encontrado
+        'no_warnings': True,  # Suprimir avisos
     }
     try:
-        # Use yt-dlp to download the video
+        # Usar yt-dlp para baixar o vídeo
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             ydl.download([url])
-        print("Download completed successfully.")
+        print("Download concluído com sucesso.")
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"Ocorreu um erro: {e}")
 
 
-# Replace with the desired YouTube video URL
-download_video('https://www.youtube.com/watch?v=1xs53m2dSRY')
+# Substitua pela URL do vídeo do YouTube desejado
+download_video('https://www.youtube.com/watch?v=moKF34zcSsI')
